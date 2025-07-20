@@ -1,5 +1,10 @@
+set -x debug in bash , set -e  exit if error  , set -o pipefailure
 df -h 
 top
 htop
 ps -ef
-find /path -name "*.error" 
+find /path -name *.error
+awk -F " " '{print $4}'
+
+
+If
