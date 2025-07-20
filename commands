@@ -1,0 +1,5 @@
+df -h 
+top
+htop
+ps -ef
+find /path -name "*.error" 
