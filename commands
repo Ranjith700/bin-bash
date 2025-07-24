@@ -6,5 +6,43 @@ ps -ef
 find /path -name *.error
 awk -F " " '{print $4}'
 
-
+=======================================================
 If
+#!/bin/bash
+if systemctl is-active nginx; then
+  echo "Nginx is running"
+else
+  echo "Nginx is NOT running"
+fi
+=========================================================
+
+processes=("nginx" "mysql" "cron")
+
+for p in "${processes[@]}"; do
+  if pgrep -x "$p" > /dev/null; then
+    echo "$p is running"
+  else
+    echo "$p is NOT running"
+  fi
+done
+=======================================================
+websites=("https://google.com" "https://github.com" "https://nonexistent.url")
+
+for site in "${websites[@]}"; do
+  if curl -s --head --request GET "$site" | grep "200 OK" &>/dev/null; then
+    echo "$site is UP"
+  else
+    echo "$site is DOWN or unreachable"
+  fi
+done
+=======================================================
+for s in "8.8.8.8" "1.1.1.1" "192.168.1.100"; do
+  if ping -c 1 -W 1 "$s" &>/dev/null; then
+    echo "$s is reachable"
+  else
+    echo "$s is NOT reachable"
+  fi
+done
+==============================================================
+
+
